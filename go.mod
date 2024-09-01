@@ -1,4 +1,4 @@
-module softball-manager/common
+module github.com/softball-manager/common
 
 go 1.21.5
 
