@@ -14,13 +14,14 @@ jobs:
               with:
                 ref: ${{ github.event.pull_request.merge_commit_sha }}
                 fetch-depth: '0'
-        
+
             - name: Bump version and push tag
               uses: anothrNick/github-tag-action@v1
               id: tag
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
                 WITH_V: true
+                
             - name: Release
               uses: softprops/action-gh-release@v2
               with:
