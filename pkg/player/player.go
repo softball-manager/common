@@ -1,10 +1,4 @@
-package model
-
-type Team struct {
-	TeamName string   `json:"teamName"`
-	Players  []Player `json:"players"`
-	Games    []Game   `json:"games"`
-}
+package player
 
 type Player struct {
 	PK        string   `json:"pk" dynamodbav:"pk"`
@@ -36,26 +30,4 @@ type CalculatedStats struct {
 	OnBasePlusSlugging float32 `json:"onBasePlusSlugging"`
 	OnBasePercentage   float32 `json:"onBasePercentage"`
 	Slugging           float32 `json:"slugging"`
-}
-
-type Game struct {
-	TeamRuns       int  `json:"teamRuns"`
-	OppositionRuns int  `json:"oppositionRuns"`
-	Win            bool `json:"win"`
-	Lineup         Lineup
-}
-
-type Lineup struct {
-	BattingOrder     []Player
-	FieldingByInning []DefensivePositions
-}
-
-type DefensivePositions struct {
-	Inning    int        `json:"inning"`
-	Positions []Position `json:"positions"`
-}
-
-type Position struct {
-	Player   Player `json:"player"`
-	Position string `json:"position"`
 }
