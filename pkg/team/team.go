@@ -1,12 +1,9 @@
 package team
 
-import (
-	"github.com/softball-manager/common/pkg/game"
-	"github.com/softball-manager/common/pkg/player"
-)
-
 type Team struct {
-	TeamName string          `json:"teamName"`
-	Players  []player.Player `json:"players"`
-	Games    []game.Game     `json:"games"`
+	PK       string              `json:"pk" dynamodbav:"pk"`
+	SK       string              `json:"sk" dynamodbav:"sk"`
+	TeamName string              `json:"teamName" dynamodbav:"teamName"`
+	Players  []string            `json:"players" dynamodbav:"players"`
+	Seasons  map[string][]string `json:"seasons" dynamodbav:"seasons"`
 }

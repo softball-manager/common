@@ -2,7 +2,8 @@ package player
 
 type Player struct {
 	PK        string   `json:"pk" dynamodbav:"pk"`
-	Name      string   `json:"name" dynamodbav:"sk"`
+	SK        string   `json:"sk" dynamodbav:"sk"`
+	Name      string   `json:"name" dynamodbav:"name"`
 	Positions []string `json:"positions" dynamodbav:"positions,omitempty"`
 	Stats     []Stats  `json:"stats" dynamodbav:"stats,omitempty"`
 }

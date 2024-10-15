@@ -16,6 +16,8 @@ var (
 
 	TableNameLogKey = "table name"
 	PlayerIDLogKey  = "pid"
+	TeamIDLogKey    = "tid"
+	GameIDLogKey    = "gid"
 	EnvLogKey       = "env"
 )
 

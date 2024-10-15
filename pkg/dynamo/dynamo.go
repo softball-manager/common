@@ -9,6 +9,12 @@ import (
 var (
 	PlayerTableNamePrefix = "player-table"
 	PlayerIDPrefix        = "Player#"
+
+	TeamTableNamePrefix = "team-table"
+	TeamIDPrefix        = "Team#"
+
+	GameTableNamePrefix = "game-table"
+	GameIDPrefix        = "Game#"
 )
 
 func CreateClient(cfg appconfig.AppConfig) *dynamodb.Client {

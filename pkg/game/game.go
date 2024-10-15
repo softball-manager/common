@@ -1,27 +1,17 @@
 package game
 
-import (
-	"github.com/softball-manager/common/pkg/player"
-)
-
 type Game struct {
-	TeamRuns       int  `json:"teamRuns"`
-	OppositionRuns int  `json:"oppositionRuns"`
-	Win            bool `json:"win"`
-	Lineup         Lineup
+	PK             string      `json:"pk" dynamodbav:"pk"`
+	SK             string      `json:"sk" dynamodbav:"sk"`
+	Date           string      `json:"date" dynamodbav:"date"`
+	TeamRuns       int         `json:"teamRuns" dynamodbav:"teamRuns"`
+	OppositionRuns int         `json:"oppositionRuns" dynamodbav:"oppositionRuns"`
+	GameOver       bool        `json:"gameOver" dynamodbav:"gameOver"`
+	Win            bool        `json:"win" dynamodbav:"win"`
+	Lineup         []Positions `json:"lineup" dynamodbav:"lineup"`
 }
 
-type Lineup struct {
-	BattingOrder     []player.Player
-	FieldingByInning []DefensivePositions
-}
-
-type DefensivePositions struct {
-	Inning    int        `json:"inning"`
-	Positions []Position `json:"positions"`
-}
-
-type Position struct {
-	Player   player.Player `json:"player"`
-	Position string        `json:"position"`
+type Positions struct {
+	Player    string   `json:"player" dynamodbav:"player"`
+	Positions []string `json:"positions" dynamodbav:"positions"`
 }
