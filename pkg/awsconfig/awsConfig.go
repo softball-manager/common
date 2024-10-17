@@ -18,7 +18,7 @@ func GetAWSConfig(ctx context.Context, env string) (aws.Config, error) {
 
 func getAWSConfig(ctx context.Context) (aws.Config, error) {
 	cfg, err := config.LoadDefaultConfig(ctx,
-		config.WithRegion("us-east-1"),
+		config.WithRegion("us-east-2"),
 	)
 
 	return cfg, err
@@ -26,7 +26,7 @@ func getAWSConfig(ctx context.Context) (aws.Config, error) {
 
 func getLocalAWSConfig(ctx context.Context) (aws.Config, error) {
 	cfg, err := config.LoadDefaultConfig(ctx,
-		config.WithRegion("us-east-1"),
+		config.WithRegion("us-east-2"),
 		config.WithCredentialsProvider(credentials.StaticCredentialsProvider{
 			Value: aws.Credentials{
 				AccessKeyID: "dummy", SecretAccessKey: "dummy", SessionToken: "dummy",
