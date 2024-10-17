@@ -6,12 +6,18 @@ import (
 )
 
 var (
+	InfoLevel  = "info"
+	DebugLevel = "debug"
+	WarnLevel  = "warn"
+	ErrorLevel = "error"
+	PanicLevel = "panic"
+
 	logLevels = map[string]zapcore.Level{
-		"debug": zap.DebugLevel,
-		"info":  zap.InfoLevel,
-		"warn":  zap.WarnLevel,
-		"error": zap.ErrorLevel,
-		"panic": zap.PanicLevel,
+		DebugLevel: zap.DebugLevel,
+		InfoLevel:  zap.InfoLevel,
+		WarnLevel:  zap.WarnLevel,
+		ErrorLevel: zap.ErrorLevel,
+		PanicLevel: zap.PanicLevel,
 	}
 
 	TableNameLogKey = "table name"
@@ -23,6 +29,12 @@ var (
 
 func GetLogger(level string) *zap.Logger {
 	logger := newLogger(level)
+	defer logger.Sync()
+	return logger
+}
+
+func GetLoggerWithEnv(level string, env string) *zap.Logger {
+	logger := newLogger(level).With(zap.String(EnvLogKey, env))
 	defer logger.Sync()
 	return logger
 }
